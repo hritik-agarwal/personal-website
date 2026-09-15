@@ -62,13 +62,15 @@ export type TimelineEntry = {
   place: string;
   /** Where the place name links to, when it does. */
   href?: string;
+  /** A square logo in public/logos, shown on the timeline. */
+  logo?: string;
   note: string;
 };
 
 export const about = {
   lede: 'I like solving problems, both in life and in code.',
   paragraphs: [
-    'I am a software engineer in Bengaluru. I spent nearly three years building Oliv, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a technical consultant, turning ideas into working products. Outside work I read, mostly history and essays, and keep a journal; the blog here is its overflow.',
+    'I am a software engineer in Bengaluru. I spent nearly three years building Oliv, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a technical consultant, turning ideas into working products.',
   ],
   timeline: [
     {
@@ -82,6 +84,7 @@ export const about = {
       role: 'Senior product engineer',
       place: 'Oliv AI, remote from Bengaluru',
       href: 'https://www.linkedin.com/company/oliv-ai/',
+      logo: '/logos/oliv-ai.png',
       note: 'Built Oliv, an AI companion that helps sales leaders streamline their process and close more deals. Clojure and Datomic.',
     },
     {
@@ -89,6 +92,7 @@ export const about = {
       role: 'Software developer',
       place: 'Newzera, Indore',
       href: 'https://www.linkedin.com/company/newzera/',
+      logo: '/logos/newzera.png',
       note: 'Shipped the swipeable fullscreen video newsfeed, in-app video shooting and editing, contact syncing and dark mode, and cut UI re-renders, animation glitches and crashes.',
     },
     {
@@ -96,6 +100,7 @@ export const about = {
       role: 'Software engineer intern',
       place: 'Newton School, remote',
       href: 'https://www.linkedin.com/school/newtonschool/',
+      logo: '/logos/newton-school.png',
       note: 'Full-stack web apps in React and Node, unit tests in Cypress, and peer review of other members’ projects before release.',
     },
     {
@@ -103,6 +108,7 @@ export const about = {
       role: 'B.Tech in Electrical, Electronics and Communications Engineering',
       place: 'IIT (ISM) Dhanbad',
       href: 'https://www.linkedin.com/school/iitism/',
+      logo: '/logos/iitism.png',
       note: 'CGPA 8.57.',
     },
   ] as TimelineEntry[],
