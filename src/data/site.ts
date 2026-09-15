@@ -17,11 +17,16 @@ export const site = {
   locale: 'en',
 };
 
+export const contact = {
+  blurb: 'Email is the best way to reach me, for work or just to talk shop.',
+};
+
+/** Shown in the order given; the first is the one to lead with. */
 export const links = [
+  { label: 'Email', handle: 'hritikagarwal456@gmail.com', href: 'mailto:hritikagarwal456@gmail.com' },
   { label: 'GitHub', handle: 'hritik-agarwal', href: 'https://github.com/hritik-agarwal' },
   { label: 'X', handle: '@htkzone', href: 'https://x.com/htkzone' },
   { label: 'LinkedIn', handle: 'hritik-agarwal', href: 'https://www.linkedin.com/in/hritik-agarwal' },
-  { label: 'Email', handle: 'hritikagarwal456@gmail.com', href: 'mailto:hritikagarwal456@gmail.com' },
 ];
 
 export const blog = {

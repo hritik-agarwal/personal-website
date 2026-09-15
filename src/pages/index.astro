@@ -32,7 +32,7 @@ const posts = (await getPosts()).slice(0, 5);
             </p>
           </Fragment>
         ) : (
-          <p class="empty">Nothing published yet.</p>
+          <p class="empty">Nothing published yet. The first post is being written.</p>
         )
       }
     </section>
@@ -45,6 +45,9 @@ const posts = (await getPosts()).slice(0, 5);
 </Base>
 
 <style>
+  .section {
+    padding-block: 3rem;
+  }
   .first {
     padding-top: 5rem;
   }
@@ -59,13 +62,22 @@ const posts = (await getPosts()).slice(0, 5);
     font-weight: 600;
     font-size: 0.94em;
   }
-  .sub {
-    margin: 3.5rem 0 1.5rem;
+  /* Every heading on the page: small, quiet, on its own line */
+  .section h2 {
+    margin: 0 0 1.5rem;
     font-size: 1.125rem;
+    font-weight: 600;
     color: var(--quiet);
   }
+  .sub {
+    margin-top: 3.5rem;
+  }
   .lede {
-    margin: 0 0 2rem;
+    margin: 0 0 1.5rem;
+    max-width: 48ch;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--ink);
   }
   .more {
     margin-top: 2rem;
@@ -73,6 +85,7 @@ const posts = (await getPosts()).slice(0, 5);
     font-weight: 600;
   }
   .empty {
+    max-width: 48ch;
     color: var(--quiet);
   }
 </style>

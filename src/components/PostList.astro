@@ -1,5 +1,5 @@
 ---
-/** Posts as a list: title and date on one line, the description under them. */
+/** Posts as rows: the date in a narrow left column, title and description beside it. */
 import type { Post } from '../lib/posts';
 import { formatDate, isoDate } from '../lib/format';
 
@@ -14,8 +14,8 @@ const { posts } = Astro.props;
   {
     posts.map((post) => (
       <li>
-        <a href={`/blog/${post.id}`}>{post.data.title}</a>
         <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
+        <a href={`/blog/${post.id}`}>{post.data.title}</a>
         <p>{post.data.description}</p>
       </li>
     ))
@@ -25,33 +25,48 @@ const { posts } = Astro.props;
 <style>
   .posts {
     display: grid;
-    gap: 1.5rem;
+    gap: 2rem;
     list-style: none;
   }
   li {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.25rem 1.5rem;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 0.3rem 1.5rem;
     align-items: baseline;
   }
-  a {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.25rem;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.2em;
-  }
   time {
+    grid-row: 1;
     font-family: var(--font-display);
     font-size: 1rem;
     color: var(--quiet);
   }
+  a {
+    grid-column: 2;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.375rem;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--lamp);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
   p {
-    grid-column: 1 / -1;
+    grid-column: 2;
+    max-width: 56ch;
     color: var(--quiet);
+  }
+  @media (max-width: 40rem) {
+    li {
+      grid-template-columns: 1fr;
+    }
+    a,
+    p {
+      grid-column: 1;
+    }
   }
 </style>
