@@ -51,21 +51,6 @@ const isCurrent = (years: string) => /now$/i.test(years);
       </div>
     </section>
 
-    <section aria-labelledby="reading">
-      <h2 id="reading">On the shelf</h2>
-      <ul class="books">
-        {
-          about.reading.map((book) => (
-            <li>
-              <span class="title">{book.title}</span>
-              <span class="author">{book.author}</span>
-              {book.status === 'reading' && <span class="status">reading now</span>}
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
     <section aria-labelledby="contact">
       <h2 id="contact">Say hello</h2>
       {

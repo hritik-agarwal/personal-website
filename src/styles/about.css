@@ -15,15 +15,12 @@
   animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.1, 1) both;
 }
 .story {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-  gap: 2rem 3rem;
-  margin-top: 3.5rem;
-  font-size: 1.0625rem;
+  margin-top: 3rem;
+  font-size: 1.125rem;
   line-height: 1.6;
 }
 .story p {
-  max-width: 44ch;
+  max-width: 58ch;
 }
 @keyframes rise {
   from {
@@ -122,46 +119,15 @@
   list-style: none;
 }
 
-/* Books */
-.books {
-  display: grid;
-  gap: 1.1rem;
-  list-style: none;
-}
-.books li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.35rem 0.85rem;
-}
-.books .title {
-  font-size: 1.3125rem;
-  font-style: italic;
-}
-.books .author {
-  color: var(--quiet);
-}
-.books .status {
-  padding: 0.1rem 0.6rem;
-  border-radius: 999px;
-  background: var(--lamp);
-  color: var(--night);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.875rem;
-}
-
-/* Contact: the address is the biggest thing on the page after the headline */
+/* Contact */
 .mail a {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.25rem, 5vw, 3rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-weight: 600;
+  font-size: 1.375rem;
   overflow-wrap: anywhere;
   text-decoration-color: var(--lamp);
-  text-decoration-thickness: 3px;
-  text-underline-offset: 0.15em;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
 }
 .elsewhere {
   display: flex;

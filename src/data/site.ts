@@ -5,8 +5,8 @@
  * component. Blog posts are the markdown files beside this file in
  * ./blog, one per post, with the fields described in ../content.config.ts.
  *
- * Links, work history and education are real. The `now` and `reading`
- * lists are still example content to replace.
+ * Links, work history and education are real. The `now` list is still
+ * example content to replace.
  */
 
 export const site = {
@@ -68,9 +68,7 @@ export type TimelineEntry = {
 export const about = {
   lede: 'I like solving problems, both in life and in code.',
   paragraphs: [
-    'I am a software engineer in Bengaluru. For nearly three years I built Oliv, an AI companion for sales teams, and since April 2026 I have worked with founders one-on-one as a technical consultant, turning their ideas into working products. I build end to end: the interface, the API behind it and, increasingly, the model in the middle.',
-    'Outside work I read a lot, mostly history and essays, and I keep a journal that occasionally turns into something worth publishing. The blog here is that overflow.',
-    'This site is where the writing goes and where I keep a record of what I am working on. If something here is useful to you, I would like to hear about it.',
+    'I am a software engineer in Bengaluru. I spent nearly three years building Oliv, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a technical consultant, turning ideas into working products. Outside work I read, mostly history and essays, and keep a journal; the blog here is its overflow.',
   ],
   timeline: [
     {
@@ -114,9 +112,4 @@ export const about = {
     { group: 'AI', items: ['LLM APIs', 'Evals', 'Retrieval'] },
     { group: 'Data and infra', items: ['PostgreSQL', 'MongoDB', 'Datomic', 'AWS', 'Netlify'] },
   ],
-  reading: [
-    { title: 'The Making of the Atomic Bomb', author: 'Richard Rhodes', status: 'reading' },
-    { title: 'Working in Public', author: 'Nadia Eghbal', status: 'finished' },
-    { title: 'A Writer’s Diary', author: 'Virginia Woolf', status: 'finished' },
-  ] as { title: string; author: string; status: 'reading' | 'finished' }[],
 };
