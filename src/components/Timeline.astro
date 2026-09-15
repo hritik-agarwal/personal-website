@@ -76,11 +76,11 @@ const isCurrent = (years: string) => /now$/i.test(years);
   li.has-logo::before {
     display: none;
   }
-  /* The logo, centred on the role's first line */
+  /* The logo, its top level with the role's top */
   .logo {
     grid-area: mark;
     align-self: start;
-    margin-top: calc((1.375rem * 1.15 - var(--mark)) / 2);
+    margin-top: 0.35rem;
     width: var(--mark);
     height: var(--mark);
     padding: 0.3rem;
