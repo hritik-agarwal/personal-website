@@ -22,7 +22,6 @@ const posts = (await getPosts()).slice(0, 5);
 
     <section class="section" id="blog" aria-labelledby="blog-heading">
       <h2 id="blog-heading">{blog.title}</h2>
-      <p class="lede">{blog.lede}</p>
       {
         posts.length > 0 ? (
           <Fragment>
@@ -46,10 +45,10 @@ const posts = (await getPosts()).slice(0, 5);
 
 <style>
   .section {
-    padding-block: 3rem;
+    padding-block: 2rem;
   }
   .first {
-    padding-top: 5rem;
+    padding-top: 4rem;
   }
   .bio {
     max-width: 58ch;
@@ -70,14 +69,7 @@ const posts = (await getPosts()).slice(0, 5);
     color: var(--quiet);
   }
   .sub {
-    margin-top: 3.5rem;
-  }
-  .lede {
-    margin: 0 0 1.5rem;
-    max-width: 48ch;
-    font-size: 1.125rem;
-    line-height: 1.55;
-    color: var(--ink);
+    margin-top: 3rem;
   }
   .more {
     margin-top: 2rem;
