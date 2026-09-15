@@ -26,10 +26,17 @@ const years = [...new Set(posts.map((post) => post.data.pubDate.getFullYear()))]
 
     {
       posts.length === 0 && (
-        <p>
+        <p class="empty">
           Nothing published yet. The first post goes in <code>src/data/blog</code>.
         </p>
       )
     }
   </div>
 </Base>
+
+<style>
+  .empty {
+    margin-top: var(--space-item);
+    color: var(--quiet);
+  }
+</style>

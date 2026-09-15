@@ -1,13 +1,34 @@
 /* Tokens */
 :root {
-  --night: #0b1e3f; /* the dominant colour: hero, favicon, theme */
-  --lamp: #ffb547; /* the one accent: the hero light, focus, underlines */
+  --night: #0b1e3f; /* the dominant colour: favicon, theme */
+  --lamp: #ffb547; /* the one accent: focus, underlines, the current role */
   --paper: #fbfaf6; /* page background */
   --ink: #141414; /* text on paper */
   --quiet: #625e56; /* secondary text on paper */
   --rule: #ddd9ce; /* hairlines */
-  --wrap: 72rem;
+
+  /* Type. Newsreader runs small for its size, so body text sits a step up. */
+  --text-meta: 1rem; /* years, dates, labels */
+  --text-body: 1.1875rem;
+  --text-title: 1.25rem; /* a role, a post title */
+  --text-heading: clamp(1.375rem, 1.15rem + 0.8vw, 1.625rem); /* a section heading */
+  --text-bio: clamp(1.4375rem, 1rem + 1.6vw, 2rem); /* the opening paragraph */
+  --text-display: clamp(2.25rem, 1.25rem + 4vw, 3.5rem); /* a page title */
+
+  /* Space, named for what it separates */
+  --space-item: 2.5rem; /* entries in a list */
+  --space-heading: 1.5rem; /* a heading and what it heads */
+  --space-section: clamp(3.5rem, 2rem + 5vw, 6rem); /* sections */
+
+  --wrap: 46rem;
   --measure: 62ch;
+  --label: 10rem; /* the left column of a row: a date, a label */
+}
+@media (max-width: 40rem) {
+  :root {
+    --text-body: 1.125rem;
+    --text-title: 1.1875rem;
+  }
 }
 
 /* Base */
@@ -23,8 +44,8 @@ html {
 body {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.125rem;
-  line-height: 1.65;
+  font-size: var(--text-body);
+  line-height: 1.6;
   color: var(--ink);
   background: var(--paper);
 }
@@ -33,28 +54,33 @@ h2,
 h3 {
   margin: 0;
   font-family: var(--font-display);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 h1 {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: var(--text-display);
   font-weight: 700;
+  line-height: 1.05;
 }
 h2 {
-  font-size: clamp(1.5rem, 2.6vw, 2rem);
-  font-weight: 600;
+  font-size: var(--text-heading);
 }
 h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: var(--text-title);
 }
 p {
   margin: 0;
   max-width: var(--measure);
+  text-wrap: pretty;
 }
 p + p {
   margin-top: 1em;
+}
+strong,
+b {
+  font-weight: 600;
 }
 ul,
 ol,
@@ -103,8 +129,11 @@ a:hover {
   width: min(100% - 3rem, var(--wrap));
   margin-inline: auto;
 }
+main {
+  padding-bottom: var(--space-section);
+}
 .intro {
-  padding-block: 4rem 2rem;
+  padding-top: clamp(2rem, 1rem + 4vw, 4rem);
 }
 .lede {
   margin-top: 1rem;
@@ -114,19 +143,19 @@ a:hover {
   max-width: 40ch;
 }
 
-/* A page section: its heading on a line of its own, space between neighbours */
+/* A page section: the same space above every one, its heading set off from what follows */
 .section {
-  padding-block: 4rem;
-  scroll-margin-top: 1rem;
+  margin-top: var(--space-section);
+  scroll-margin-top: 2rem;
+}
+.section:first-child {
+  margin-top: 0;
+}
+.intro + .section {
+  margin-top: var(--space-item);
 }
 .section > h2 {
-  margin-bottom: 2rem;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-}
-@media (max-width: 48rem) {
-  .section {
-    padding-block: 3rem;
-  }
+  margin-bottom: var(--space-heading);
 }
 
 /* Motion */

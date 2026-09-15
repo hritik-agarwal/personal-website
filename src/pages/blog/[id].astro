@@ -49,14 +49,19 @@ const minutes = readingTime(post.body);
     gap: 1.5rem;
     margin-top: 1.25rem;
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: var(--text-meta);
     color: var(--quiet);
+  }
+  .prose {
+    margin-top: var(--space-item);
   }
   .end {
     margin-top: 4rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--rule);
     font-family: var(--font-display);
+    font-weight: 500;
     color: var(--quiet);
   }
   .end p + p {

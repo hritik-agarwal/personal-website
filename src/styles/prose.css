@@ -32,7 +32,8 @@
   margin-top: 0.35em;
 }
 .prose blockquote {
-  margin: 0;
+  margin-inline: 0;
+  margin-bottom: 0;
   padding-left: 1.25rem;
   border-left: 3px solid var(--lamp);
   color: var(--quiet);

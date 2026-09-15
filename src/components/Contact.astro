@@ -17,30 +17,30 @@ import { contact, links } from '../data/site';
 
 <style>
   .blurb {
-    max-width: 48ch;
-    margin-bottom: 1.75rem;
+    margin-bottom: var(--space-heading);
   }
   .links {
     display: grid;
-    gap: 0.7rem;
+    gap: 0.75rem;
     list-style: none;
   }
+  /* The same label column as the post list, so the two line up */
   li {
     display: grid;
-    grid-template-columns: 6rem minmax(0, 1fr);
-    gap: 1rem;
+    grid-template-columns: var(--label) minmax(0, 1fr);
+    column-gap: 1.5rem;
     align-items: baseline;
   }
   .label {
     font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: var(--text-meta);
     color: var(--quiet);
   }
   a {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: var(--text-body);
     overflow-wrap: anywhere;
     text-decoration: none;
   }
@@ -49,5 +49,13 @@ import { contact, links } from '../data/site';
     text-decoration-color: var(--lamp);
     text-decoration-thickness: 2px;
     text-underline-offset: 0.2em;
+  }
+  @media (max-width: 40rem) {
+    .links {
+      gap: 1rem;
+    }
+    li {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 </style>

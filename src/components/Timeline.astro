@@ -1,8 +1,8 @@
 ---
 /**
- * Work and study, newest first: a spine through each entry's logo, or a
- * dot where there is none, sitting level with the role. Amber marks the
- * entry whose years end in "now".
+ * Work and study, newest first. Each entry's logo, or a dot where there is
+ * none, sits level with the role, and a spine joins each mark to the next.
+ * Amber marks the entry whose years end in "now".
  */
 import type { TimelineEntry } from '../data/site';
 
@@ -31,24 +31,16 @@ const isCurrent = (years: string) => /now$/i.test(years);
 <style>
   .timeline {
     --mark: 2.75rem;
-    position: relative;
+    --years: 1.5rem; /* the years line; the mark column starts below it */
     display: grid;
-    gap: 2.75rem;
+    gap: var(--space-item);
     list-style: none;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    top: 2.5rem;
-    bottom: 3rem;
-    left: calc(var(--mark) / 2 - 1px);
-    width: 2px;
-    background: var(--rule);
   }
   li {
     position: relative;
     display: grid;
     grid-template-columns: var(--mark) minmax(0, 1fr);
+    grid-template-rows: var(--years);
     grid-template-areas:
       '. years'
       'mark role'
@@ -56,13 +48,25 @@ const isCurrent = (years: string) => /now$/i.test(years);
       '. note';
     column-gap: 1.25rem;
   }
+  /* The spine, from inside this entry's mark to inside the next one's */
+  li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--years) + 1rem);
+    left: calc(var(--mark) / 2 - 1px);
+    width: 2px;
+    height: calc(100% + var(--space-item));
+    background: var(--rule);
+  }
   /* The dot, level with the role's first line */
   li::before {
     content: '';
+    position: relative;
+    z-index: 1;
     grid-area: mark;
     align-self: start;
     justify-self: center;
-    margin-top: 0.35rem;
+    margin-top: 0.6rem;
     width: 0.9rem;
     height: 0.9rem;
     border: 2px solid var(--quiet);
@@ -78,9 +82,11 @@ const isCurrent = (years: string) => /now$/i.test(years);
   }
   /* The logo, its top level with the role's top */
   .logo {
+    position: relative;
+    z-index: 1;
     grid-area: mark;
     align-self: start;
-    margin-top: 0.35rem;
+    margin-top: 0.3rem;
     width: var(--mark);
     height: var(--mark);
     padding: 0.3rem;
@@ -96,29 +102,31 @@ const isCurrent = (years: string) => /now$/i.test(years);
   .years {
     grid-area: years;
     font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 500;
+    font-size: var(--text-meta);
+    line-height: var(--years);
     color: var(--quiet);
   }
   .role {
     grid-area: role;
-    margin-top: 0.35rem;
+    margin-top: 0.25rem;
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 1.375rem;
-    line-height: 1.15;
+    font-size: var(--text-title);
+    line-height: 1.25;
     letter-spacing: -0.015em;
   }
   .place {
     grid-area: place;
-    margin-top: 0.2rem;
+    margin-top: 0.125rem;
     font-family: var(--font-display);
-    font-size: 1.0625rem;
+    font-weight: 500;
+    font-size: var(--text-meta);
   }
   .note {
     grid-area: note;
-    margin-top: 0.7rem;
-    max-width: 60ch;
+    margin-top: 0.5rem;
+    max-width: 58ch;
     color: var(--quiet);
   }
 </style>
