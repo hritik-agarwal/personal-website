@@ -5,8 +5,8 @@
  * component. Blog posts are the markdown files beside this file in
  * ./blog, one per post, with the fields described in ../content.config.ts.
  *
- * Links, employer and education are real. Anything marked TODO, and the
- * `now` and `reading` lists, are still example content to replace.
+ * Links, work history and education are real. The `now` and `reading`
+ * lists are still example content to replace.
  */
 
 export const site = {
@@ -56,6 +56,15 @@ export const blog = {
   lede: 'Notes on building software, working with models, and whatever I am reading.',
 };
 
+export type TimelineEntry = {
+  years: string;
+  role: string;
+  place: string;
+  /** Where the place name links to, when it does. */
+  href?: string;
+  note: string;
+};
+
 export const about = {
   lede: 'I like solving problems, both in life and in code.',
   paragraphs: [
@@ -74,27 +83,31 @@ export const about = {
       years: 'Jun 2023 to Mar 2026',
       role: 'Senior product engineer',
       place: 'Oliv AI, remote from Bengaluru',
+      href: 'https://www.linkedin.com/company/oliv-ai/',
       note: 'Built Oliv, an AI companion that helps sales leaders streamline their process and close more deals. Clojure and Datomic.',
     },
     {
       years: 'Jun 2022 to Apr 2023',
       role: 'Software developer',
       place: 'Newzera, Indore',
+      href: 'https://www.linkedin.com/company/newzera/',
       note: 'Shipped the swipeable fullscreen video newsfeed, in-app video shooting and editing, contact syncing and dark mode, and cut UI re-renders, animation glitches and crashes.',
     },
     {
       years: 'Dec 2020 to Feb 2021',
       role: 'Software engineer intern',
       place: 'Newton School, remote',
+      href: 'https://www.linkedin.com/school/newtonschool/',
       note: 'Full-stack web apps in React and Node, unit tests in Cypress, and peer review of other members’ projects before release.',
     },
     {
       years: '2018 to 2022',
-      role: 'B.Tech',
+      role: 'B.Tech in Electrical, Electronics and Communications Engineering',
       place: 'IIT (ISM) Dhanbad',
-      note: 'TODO branch, and anything worth saying about those years.',
+      href: 'https://www.linkedin.com/school/iitism/',
+      note: 'CGPA 8.57.',
     },
-  ],
+  ] as TimelineEntry[],
   stack: [
     { group: 'Languages', items: ['TypeScript', 'Python', 'Clojure', 'SQL'] },
     { group: 'Web', items: ['React', 'Next.js', 'Tailwind CSS', 'Node', 'Astro'] },
