@@ -1,60 +1,64 @@
 ---
 import Base from '../layouts/Base.astro';
 import { about, links } from '../data/site';
+import '../styles/about.css';
+
+const email = links.find((link) => link.label === 'Email');
+const elsewhere = links.filter((link) => link !== email);
+const isCurrent = (years: string) => /now$/i.test(years);
 ---
 
-<Base title="About" description={about.lede}>
-  <div class="wrap">
-    <header class="intro">
-      <h1>About</h1>
-      <p class="lede">{about.lede}</p>
-    </header>
+<Base title="About" description={about.lede} tone="night">
+  <header class="about-head">
+    <div class="wrap">
+      <h1>{about.lede}</h1>
+      <div class="story">{about.paragraphs.map((text) => <p>{text}</p>)}</div>
+    </div>
+  </header>
 
-    <section class="section" aria-labelledby="story">
-      <h2 id="story">Story</h2>
-      <div>{about.paragraphs.map((text) => <p>{text}</p>)}</div>
-    </section>
-
-    <section class="section" aria-labelledby="timeline">
+  <div class="wrap about-body">
+    <section aria-labelledby="timeline">
       <h2 id="timeline">Timeline</h2>
       <ol class="timeline">
         {
           about.timeline.map((entry) => (
-            <li>
-              <span class="years">{entry.years}</span>
-              <div>
-                <h3>
-                  {entry.role}, {entry.href ? <a href={entry.href}>{entry.place}</a> : entry.place}
-                </h3>
-                <p>{entry.note}</p>
-              </div>
+            <li class:list={{ current: isCurrent(entry.years) }}>
+              <p class="years">{entry.years}</p>
+              <h3>{entry.role}</h3>
+              <p class="place">{entry.href ? <a href={entry.href}>{entry.place}</a> : entry.place}</p>
+              <p class="note">{entry.note}</p>
             </li>
           ))
         }
       </ol>
     </section>
 
-    <section class="section" aria-labelledby="tools">
-      <h2 id="tools">Tools</h2>
-      <dl class="pairs">
+    <section aria-labelledby="tools">
+      <h2 id="tools">What I work with</h2>
+      <div class="stack">
         {
           about.stack.map((group) => (
             <div>
-              <dt>{group.group}</dt>
-              <dd>{group.items.join(', ')}</dd>
+              <h3>{group.group}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
             </div>
           ))
         }
-      </dl>
+      </div>
     </section>
 
-    <section class="section" aria-labelledby="reading">
-      <h2 id="reading">Reading</h2>
+    <section aria-labelledby="reading">
+      <h2 id="reading">On the shelf</h2>
       <ul class="books">
         {
           about.reading.map((book) => (
             <li>
-              <em>{book.title}</em>, {book.author}
+              <span class="title">{book.title}</span>
+              <span class="author">{book.author}</span>
               {book.status === 'reading' && <span class="status">reading now</span>}
             </li>
           ))
@@ -62,14 +66,20 @@ import { about, links } from '../data/site';
       </ul>
     </section>
 
-    <section class="section" aria-labelledby="contact">
-      <h2 id="contact">Contact</h2>
-      <ul class="links">
+    <section aria-labelledby="contact">
+      <h2 id="contact">Say hello</h2>
+      {
+        email && (
+          <p class="mail">
+            <a href={email.href}>{email.handle}</a>
+          </p>
+        )
+      }
+      <ul class="elsewhere">
         {
-          links.map((link) => (
+          elsewhere.map((link) => (
             <li>
-              <span>{link.label}</span>
-              <a href={link.href}>{link.handle}</a>
+              <a href={link.href}>{link.label}</a>
             </li>
           ))
         }
@@ -77,45 +87,3 @@ import { about, links } from '../data/site';
     </section>
   </div>
 </Base>
-
-<style>
-  .timeline {
-    list-style: none;
-    display: grid;
-    gap: 2rem;
-  }
-  .timeline li {
-    display: grid;
-    grid-template-columns: 11rem minmax(0, 1fr);
-    gap: 1rem;
-  }
-  .years {
-    font-family: var(--font-display);
-    font-weight: 600;
-    color: var(--quiet);
-    font-variant-numeric: tabular-nums;
-  }
-  .timeline h3 {
-    font-size: 1.125rem;
-  }
-  .timeline p {
-    margin-top: 0.25rem;
-  }
-  .books {
-    list-style: none;
-    display: grid;
-    gap: 0.5rem;
-  }
-  .status {
-    margin-left: 0.75rem;
-    font-family: var(--font-display);
-    font-size: 0.9375rem;
-    color: var(--quiet);
-  }
-  @media (max-width: 48rem) {
-    .timeline li {
-      grid-template-columns: 1fr;
-      gap: 0.25rem;
-    }
-  }
-</style>
