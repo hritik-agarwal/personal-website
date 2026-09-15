@@ -5,7 +5,8 @@
  * component. Blog posts are the markdown files beside this file in
  * ./blog, one per post, with the fields described in ../content.config.ts.
  *
- * Everything below is example content. Replace it with your own.
+ * Links, employer and education are real. Anything marked TODO, and the
+ * `now` and `reading` lists, are still example content to replace.
  */
 
 export const site = {
@@ -44,10 +45,10 @@ export const now = [
 ];
 
 export const links = [
-  { label: 'GitHub', handle: 'hritik', href: 'https://github.com/' },
-  { label: 'X', handle: '@hritik', href: 'https://x.com/' },
-  { label: 'LinkedIn', handle: 'hritikagarwal', href: 'https://www.linkedin.com/' },
-  { label: 'Email', handle: 'hello@example.com', href: 'mailto:hello@example.com' },
+  { label: 'GitHub', handle: 'hritik-agarwal', href: 'https://github.com/hritik-agarwal' },
+  { label: 'X', handle: '@htkzone', href: 'https://x.com/htkzone' },
+  { label: 'LinkedIn', handle: 'hritik-agarwal', href: 'https://www.linkedin.com/in/hritik-agarwal' },
+  { label: 'Email', handle: 'hritikagarwal456@gmail.com', href: 'mailto:hritikagarwal456@gmail.com' },
 ];
 
 export const blog = {
@@ -56,37 +57,37 @@ export const blog = {
 };
 
 export const about = {
-  lede: 'A developer in the JavaScript and Python worlds, with a habit of writing things down.',
+  lede: 'I like solving problems, both in life and in code.',
   paragraphs: [
-    'I have spent the last few years building products end to end: the interface, the API behind it and, increasingly, the model in the middle. I like the whole stack because the interesting problems sit at the joints.',
+    'I am a software engineer and technical contractor in Bengaluru, currently at Oliv AI. I studied at IIT (ISM) Dhanbad, class of 2022. I build products end to end: the interface, the API behind it and, increasingly, the model in the middle.',
     'Outside work I read a lot, mostly history and essays, and I keep a journal that occasionally turns into something worth publishing. The blog here is that overflow.',
     'This site is where the writing goes and where I keep a record of what I am working on. If something here is useful to you, I would like to hear about it.',
   ],
   timeline: [
     {
-      years: '2024 to now',
-      role: 'Full-stack and AI engineer',
-      place: 'Example Labs',
-      note: 'Agent tooling, evaluation pipelines and the product on top of them.',
-    },
-    {
-      years: '2021 to 2024',
+      years: 'TODO start year to now',
       role: 'Software engineer',
-      place: 'Example Co',
-      note: 'React and Node at first, then a data platform in Python.',
+      place: 'Oliv AI, Bengaluru',
+      note: 'TODO one line on what you build there.',
     },
     {
-      years: '2017 to 2021',
-      role: 'B.Tech, Computer Science',
-      place: 'Example University',
-      note: 'Where the journaling habit started.',
+      years: 'TODO',
+      role: 'TODO earlier role',
+      place: 'TODO company',
+      note: 'TODO. LinkedIn lists two earlier roles that are only visible when signed in.',
+    },
+    {
+      years: '2018 to 2022',
+      role: 'B.Tech',
+      place: 'IIT (ISM) Dhanbad',
+      note: 'TODO branch, and anything worth saying about those years.',
     },
   ],
   stack: [
     { group: 'Languages', items: ['TypeScript', 'Python', 'SQL'] },
-    { group: 'Web', items: ['React', 'Next.js', 'Astro', 'Node'] },
-    { group: 'AI', items: ['LLM APIs', 'Evals', 'Retrieval', 'PyTorch, a little'] },
-    { group: 'Infra', items: ['Postgres', 'Docker', 'Netlify', 'AWS'] },
+    { group: 'Web', items: ['React', 'Next.js', 'Tailwind CSS', 'Node', 'Astro'] },
+    { group: 'AI', items: ['LLM APIs', 'Evals', 'Retrieval'] },
+    { group: 'Data and infra', items: ['PostgreSQL', 'MongoDB', 'AWS', 'Netlify'] },
   ],
   reading: [
     { title: 'The Making of the Atomic Bomb', author: 'Richard Rhodes', status: 'reading' },
