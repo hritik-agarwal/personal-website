@@ -10,8 +10,8 @@
 
 export const site = {
   name: 'Hritik Agarwal',
-  /** Feeds canonical links, the sitemap and RSS. Set it to the real domain when it is live. */
-  url: 'https://hritik.example.com',
+  /** Feeds canonical links, the sitemap and RSS. */
+  url: 'https://hritikagarwal.com',
   description: 'Full-stack and AI developer. I build software and write about what I learn.',
   locale: 'en',
 };
