@@ -5,3 +5,6 @@ dist/
 .env
 .env.*
 .DS_Store
+
+# devkb placeholder page, not part of the site (Astro builds from src/pages)
+/index.html
