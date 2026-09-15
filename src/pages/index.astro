@@ -14,7 +14,7 @@ const posts = (await getPosts()).slice(0, 5);
   <div class="wrap">
     <section class="section first" id="about" aria-label="About">
       <div class="bio">{about.paragraphs.map((text) => <p set:html={text} />)}</div>
-      <h2 class="sub">Timeline</h2>
+      <h2 class="sub">The story so far</h2>
       <Timeline entries={about.timeline} />
       <h2 class="sub">What I have worked with</h2>
       <Stack groups={about.stack} />
