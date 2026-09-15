@@ -16,7 +16,7 @@ const posts = (await getPosts()).slice(0, 5);
       <div class="bio">{about.paragraphs.map((text) => <p set:html={text} />)}</div>
       <h2 class="sub">The story so far</h2>
       <Timeline entries={about.timeline} />
-      <h2 class="sub">What I have worked with</h2>
+      <h2 class="sub">Tools of the trade</h2>
       <Stack groups={about.stack} />
     </section>
 
