@@ -1,16 +1,11 @@
 ---
 import { site, nav } from '../data/site';
 
-interface Props {
-  tone?: 'night' | 'paper';
-}
-
-const { tone = 'paper' } = Astro.props;
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
 ---
 
-<header class:list={['header', tone]}>
+<header class="header">
   <div class="wrap bar">
     <a class="brand" href="/">{site.name}</a>
     <nav aria-label="Main">
@@ -59,12 +54,5 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
     text-decoration-color: var(--lamp);
     text-decoration-thickness: 2px;
     text-underline-offset: 0.3em;
-  }
-  /* Over the hero: no background, light text */
-  .night {
-    position: absolute;
-    inset: 0 0 auto;
-    z-index: 2;
-    color: var(--paper);
   }
 </style>

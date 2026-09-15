@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import Hero from '../components/Hero.astro';
 import Timeline from '../components/Timeline.astro';
 import Stack from '../components/Stack.astro';
 import PostList from '../components/PostList.astro';
@@ -11,10 +10,9 @@ import { getPosts } from '../lib/posts';
 const posts = (await getPosts()).slice(0, 5);
 ---
 
-<Base tone="night">
-  <Hero />
+<Base>
   <div class="wrap">
-    <section class="section" id="about" aria-labelledby="about-heading">
+    <section class="section first" id="about" aria-labelledby="about-heading">
       <h2 id="about-heading">About</h2>
       <p class="lede">{about.lede}</p>
       <div class="bio">{about.paragraphs.map((text) => <p>{text}</p>)}</div>
@@ -27,8 +25,18 @@ const posts = (await getPosts()).slice(0, 5);
     <section class="section" id="blog" aria-labelledby="blog-heading">
       <h2 id="blog-heading">{blog.title}</h2>
       <p class="lede">{blog.lede}</p>
-      <PostList posts={posts} />
-      <p class="more"><a href="/blog">All posts</a></p>
+      {
+        posts.length > 0 ? (
+          <Fragment>
+            <PostList posts={posts} />
+            <p class="more">
+              <a href="/blog">All posts</a>
+            </p>
+          </Fragment>
+        ) : (
+          <p class="empty">Nothing published yet.</p>
+        )
+      }
     </section>
 
     <section class="section" id="hello" aria-labelledby="hello-heading">
@@ -39,6 +47,9 @@ const posts = (await getPosts()).slice(0, 5);
 </Base>
 
 <style>
+  .first {
+    padding-top: 2rem;
+  }
   .lede {
     margin: 0 0 2rem;
   }
@@ -54,5 +65,8 @@ const posts = (await getPosts()).slice(0, 5);
     margin-top: 2rem;
     font-family: var(--font-display);
     font-weight: 600;
+  }
+  .empty {
+    color: var(--quiet);
   }
 </style>

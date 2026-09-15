@@ -22,12 +22,6 @@ export const nav = [
   { label: 'Blog', href: '/#blog' },
 ];
 
-export const hero = {
-  headline: ['I build software', 'and write about it.'],
-  claim:
-    'Full-stack and AI developer. Most days that means TypeScript, Python and a model or two. Most nights, a book and a notebook.',
-};
-
 export const links = [
   { label: 'GitHub', handle: 'hritik-agarwal', href: 'https://github.com/hritik-agarwal' },
   { label: 'X', handle: '@htkzone', href: 'https://x.com/htkzone' },

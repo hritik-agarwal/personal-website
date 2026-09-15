@@ -1,7 +1,8 @@
 ---
 /**
  * Work and study, newest first: a spine through each entry's logo, or a
- * dot where there is none. Amber marks the entry whose years end in "now".
+ * dot where there is none, sitting level with the role. Amber marks the
+ * entry whose years end in "now".
  */
 import type { TimelineEntry } from '../data/site';
 
@@ -33,26 +34,35 @@ const isCurrent = (years: string) => /now$/i.test(years);
     position: relative;
     display: grid;
     gap: 2.75rem;
-    padding-left: calc(var(--mark) + 1.25rem);
     list-style: none;
   }
   .timeline::before {
     content: '';
     position: absolute;
-    top: 0.6rem;
-    bottom: 0.6rem;
+    top: 2.5rem;
+    bottom: 3rem;
     left: calc(var(--mark) / 2 - 1px);
     width: 2px;
     background: var(--rule);
   }
   li {
     position: relative;
+    display: grid;
+    grid-template-columns: var(--mark) minmax(0, 1fr);
+    grid-template-areas:
+      '. years'
+      'mark role'
+      'mark place'
+      '. note';
+    column-gap: 1.25rem;
   }
+  /* The dot, level with the role's first line */
   li::before {
     content: '';
-    position: absolute;
-    top: 0.35rem;
-    left: calc(-1.25rem - var(--mark) / 2 - 0.45rem);
+    grid-area: mark;
+    align-self: start;
+    justify-self: center;
+    margin-top: 0.35rem;
     width: 0.9rem;
     height: 0.9rem;
     border: 2px solid var(--quiet);
@@ -66,10 +76,11 @@ const isCurrent = (years: string) => /now$/i.test(years);
   li.has-logo::before {
     display: none;
   }
+  /* The logo, centred on the role's first line */
   .logo {
-    position: absolute;
-    top: -0.15rem;
-    left: calc(-1.25rem - var(--mark));
+    grid-area: mark;
+    align-self: start;
+    margin-top: calc((1.375rem * 1.15 - var(--mark)) / 2);
     width: var(--mark);
     height: var(--mark);
     padding: 0.3rem;
@@ -83,12 +94,14 @@ const isCurrent = (years: string) => /now$/i.test(years);
     box-shadow: 0 0 0 2px var(--lamp);
   }
   .years {
+    grid-area: years;
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 1rem;
     color: var(--quiet);
   }
   .role {
+    grid-area: role;
     margin-top: 0.35rem;
     font-family: var(--font-display);
     font-weight: 600;
@@ -97,11 +110,13 @@ const isCurrent = (years: string) => /now$/i.test(years);
     letter-spacing: -0.015em;
   }
   .place {
+    grid-area: place;
     margin-top: 0.2rem;
     font-family: var(--font-display);
     font-size: 1.0625rem;
   }
   .note {
+    grid-area: note;
     margin-top: 0.7rem;
     max-width: 60ch;
     color: var(--quiet);
