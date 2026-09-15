@@ -10,15 +10,14 @@ import { getPosts } from '../lib/posts';
 const posts = (await getPosts()).slice(0, 5);
 ---
 
-<Base>
+<Base home>
   <div class="wrap">
     <section class="section first" id="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
-      <p class="lede">{about.lede}</p>
+      <h1 id="about-heading">{about.lede}</h1>
       <div class="bio">{about.paragraphs.map((text) => <p>{text}</p>)}</div>
-      <h3 class="sub">Timeline</h3>
+      <h2 class="sub">Timeline</h2>
       <Timeline entries={about.timeline} />
-      <h3 class="sub">What I work with</h3>
+      <h2 class="sub">What I have worked with</h2>
       <Stack groups={about.stack} />
     </section>
 
@@ -48,18 +47,24 @@ const posts = (await getPosts()).slice(0, 5);
 
 <style>
   .first {
-    padding-top: 2rem;
+    padding-top: 5rem;
   }
-  .lede {
-    margin: 0 0 2rem;
+  .first h1 {
+    max-width: 20ch;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
   }
   .bio {
+    margin-top: 2rem;
     max-width: 60ch;
+    font-size: 1.1875rem;
   }
   .sub {
     margin: 3.5rem 0 1.5rem;
     font-size: 1.125rem;
     color: var(--quiet);
+  }
+  .lede {
+    margin: 0 0 2rem;
   }
   .more {
     margin-top: 2rem;

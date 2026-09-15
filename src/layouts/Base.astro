@@ -7,9 +7,11 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  /** The home page carries the name itself, so it gets no header. */
+  home?: boolean;
 }
 
-const { title, description = site.description } = Astro.props;
+const { title, description = site.description, home = false } = Astro.props;
 const fullTitle = title ? `${title} – ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
@@ -36,7 +38,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <Header />
+    {!home && <Header />}
     <main id="main">
       <slot />
     </main>
