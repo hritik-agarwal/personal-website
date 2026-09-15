@@ -59,22 +59,34 @@ export const blog = {
 export const about = {
   lede: 'I like solving problems, both in life and in code.',
   paragraphs: [
-    'I am a software engineer and technical contractor in Bengaluru, currently at Oliv AI. I studied at IIT (ISM) Dhanbad, class of 2022. I build products end to end: the interface, the API behind it and, increasingly, the model in the middle.',
+    'I am a software engineer in Bengaluru. For nearly three years I built Oliv, an AI companion for sales teams, and since April 2026 I have worked with founders one-on-one as a technical consultant, turning their ideas into working products. I build end to end: the interface, the API behind it and, increasingly, the model in the middle.',
     'Outside work I read a lot, mostly history and essays, and I keep a journal that occasionally turns into something worth publishing. The blog here is that overflow.',
     'This site is where the writing goes and where I keep a record of what I am working on. If something here is useful to you, I would like to hear about it.',
   ],
   timeline: [
     {
-      years: 'TODO start year to now',
-      role: 'Software engineer',
-      place: 'Oliv AI, Bengaluru',
-      note: 'TODO one line on what you build there.',
+      years: 'Apr 2026 to now',
+      role: 'Technical consultant',
+      place: 'Self-employed',
+      note: 'Working with founders one-on-one to build their ideas.',
     },
     {
-      years: 'TODO',
-      role: 'TODO earlier role',
-      place: 'TODO company',
-      note: 'TODO. LinkedIn lists two earlier roles that are only visible when signed in.',
+      years: 'Jun 2023 to Mar 2026',
+      role: 'Senior product engineer',
+      place: 'Oliv AI, remote from Bengaluru',
+      note: 'Built Oliv, an AI companion that helps sales leaders streamline their process and close more deals. Clojure and Datomic.',
+    },
+    {
+      years: 'Jun 2022 to Apr 2023',
+      role: 'Software developer',
+      place: 'Newzera, Indore',
+      note: 'Shipped the swipeable fullscreen video newsfeed, in-app video shooting and editing, contact syncing and dark mode, and cut UI re-renders, animation glitches and crashes.',
+    },
+    {
+      years: 'Dec 2020 to Feb 2021',
+      role: 'Software engineer intern',
+      place: 'Newton School, remote',
+      note: 'Full-stack web apps in React and Node, unit tests in Cypress, and peer review of other members’ projects before release.',
     },
     {
       years: '2018 to 2022',
@@ -84,10 +96,10 @@ export const about = {
     },
   ],
   stack: [
-    { group: 'Languages', items: ['TypeScript', 'Python', 'SQL'] },
+    { group: 'Languages', items: ['TypeScript', 'Python', 'Clojure', 'SQL'] },
     { group: 'Web', items: ['React', 'Next.js', 'Tailwind CSS', 'Node', 'Astro'] },
     { group: 'AI', items: ['LLM APIs', 'Evals', 'Retrieval'] },
-    { group: 'Data and infra', items: ['PostgreSQL', 'MongoDB', 'AWS', 'Netlify'] },
+    { group: 'Data and infra', items: ['PostgreSQL', 'MongoDB', 'Datomic', 'AWS', 'Netlify'] },
   ],
   reading: [
     { title: 'The Making of the Atomic Bomb', author: 'Richard Rhodes', status: 'reading' },
