@@ -1,0 +1,70 @@
+---
+import { site, nav } from '../data/site';
+
+interface Props {
+  tone?: 'night' | 'paper';
+}
+
+const { tone = 'paper' } = Astro.props;
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class:list={['header', tone]}>
+  <div class="wrap bar">
+    <a class="brand" href="/">{site.name}</a>
+    <nav aria-label="Main">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 2rem;
+    padding-block: 1.5rem;
+  }
+  .brand {
+    font-size: 1.125rem;
+    text-decoration: none;
+  }
+  ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  nav a {
+    text-decoration: none;
+  }
+  nav a:hover,
+  nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-color: var(--lamp);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+  /* Over the hero: no background, light text */
+  .night {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 2;
+    color: var(--paper);
+  }
+</style>

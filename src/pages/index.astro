@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import { now, links } from '../data/site';
+import { getPosts } from '../lib/posts';
+import { formatDate, isoDate } from '../lib/format';
+
+const posts = (await getPosts()).slice(0, 3);
+---
+
+<Base tone="night">
+  <Hero />
+  <div class="wrap">
+    <section class="section" aria-labelledby="now">
+      <h2 id="now">Now</h2>
+      <dl class="pairs">
+        {
+          now.map((item) => (
+            <div>
+              <dt>{item.term}</dt>
+              <dd>{item.text}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="writing">
+      <h2 id="writing">Writing</h2>
+      <div>
+        <ol class="posts">
+          {
+            posts.map((post) => (
+              <li>
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
+                <p>{post.data.description}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <p class="more"><a href="/blog">All posts</a></p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="elsewhere">
+      <h2 id="elsewhere">Elsewhere</h2>
+      <ul class="links">
+        {
+          links.map((link) => (
+            <li>
+              <span>{link.label}</span>
+              <a href={link.href}>{link.handle}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Base>

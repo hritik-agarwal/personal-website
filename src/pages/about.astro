@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import { about, links } from '../data/site';
+---
+
+<Base title="About" description={about.lede}>
+  <div class="wrap">
+    <header class="intro">
+      <h1>About</h1>
+      <p class="lede">{about.lede}</p>
+    </header>
+
+    <section class="section" aria-labelledby="story">
+      <h2 id="story">Story</h2>
+      <div>{about.paragraphs.map((text) => <p>{text}</p>)}</div>
+    </section>
+
+    <section class="section" aria-labelledby="timeline">
+      <h2 id="timeline">Timeline</h2>
+      <ol class="timeline">
+        {
+          about.timeline.map((entry) => (
+            <li>
+              <span class="years">{entry.years}</span>
+              <div>
+                <h3>{entry.role}, {entry.place}</h3>
+                <p>{entry.note}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="section" aria-labelledby="tools">
+      <h2 id="tools">Tools</h2>
+      <dl class="pairs">
+        {
+          about.stack.map((group) => (
+            <div>
+              <dt>{group.group}</dt>
+              <dd>{group.items.join(', ')}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="reading">
+      <h2 id="reading">Reading</h2>
+      <ul class="books">
+        {
+          about.reading.map((book) => (
+            <li>
+              <em>{book.title}</em>, {book.author}
+              {book.status === 'reading' && <span class="status">reading now</span>}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="contact">
+      <h2 id="contact">Contact</h2>
+      <ul class="links">
+        {
+          links.map((link) => (
+            <li>
+              <span>{link.label}</span>
+              <a href={link.href}>{link.handle}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .timeline {
+    list-style: none;
+    display: grid;
+    gap: 2rem;
+  }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .years {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--quiet);
+    font-variant-numeric: tabular-nums;
+  }
+  .timeline h3 {
+    font-size: 1.125rem;
+  }
+  .timeline p {
+    margin-top: 0.25rem;
+  }
+  .books {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .status {
+    margin-left: 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    color: var(--quiet);
+  }
+  @media (max-width: 48rem) {
+    .timeline li {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import { blog } from '../../data/site';
+import { getPosts } from '../../lib/posts';
+import { formatDate, isoDate } from '../../lib/format';
+
+const posts = await getPosts();
+const years = [...new Set(posts.map((post) => post.data.pubDate.getFullYear()))];
+---
+
+<Base title={blog.title} description={blog.lede}>
+  <div class="wrap">
+    <header class="intro">
+      <h1>{blog.title}</h1>
+      <p class="lede">{blog.lede}</p>
+    </header>
+
+    {
+      years.map((year) => (
+        <section class="section" aria-labelledby={`year-${year}`}>
+          <h2 id={`year-${year}`}>{year}</h2>
+          <ol class="posts">
+            {posts
+              .filter((post) => post.data.pubDate.getFullYear() === year)
+              .map((post) => (
+                <li>
+                  <a href={`/blog/${post.id}`}>{post.data.title}</a>
+                  <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
+                  <p>{post.data.description}</p>
+                </li>
+              ))}
+          </ol>
+        </section>
+      ))
+    }
+
+    {
+      posts.length === 0 && (
+        <p>
+          Nothing published yet. The first post goes in <code>src/data/blog</code>.
+        </p>
+      )
+    }
+  </div>
+</Base>

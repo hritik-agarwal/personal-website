@@ -1,0 +1,81 @@
+/* A post body. Applied to the element wrapping rendered markdown. */
+.prose {
+  max-width: var(--measure);
+  font-size: 1.1875rem;
+  line-height: 1.7;
+}
+.prose > * + * {
+  margin-top: 1.25em;
+}
+.prose p {
+  max-width: none;
+}
+.prose h2 {
+  margin-top: 2.25em;
+  font-size: 1.625rem;
+}
+.prose h3 {
+  margin-top: 1.75em;
+}
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.75em;
+}
+.prose a {
+  text-decoration-color: var(--lamp);
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose blockquote {
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--lamp);
+  color: var(--quiet);
+  font-style: italic;
+}
+.prose code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.875em;
+}
+.prose :not(pre) > code {
+  padding: 0.1em 0.35em;
+  background: #eeebe2;
+  border-radius: 0.25em;
+}
+.prose pre {
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+.prose pre code {
+  font-size: inherit;
+}
+.prose hr {
+  margin-block: 3em;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+.prose img {
+  border-radius: 0.5rem;
+}
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+.prose th,
+.prose td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+}
+.prose th {
+  font-family: var(--font-display);
+}

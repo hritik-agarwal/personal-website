@@ -1,0 +1,74 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPosts, readingTime } from '../../lib/posts';
+import { formatDate, isoDate } from '../../lib/format';
+import '../../styles/prose.css';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, tags } = post.data;
+const minutes = readingTime(post.body);
+---
+
+<Base title={title} description={description}>
+  <article class="wrap">
+    <header class="intro">
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+      <p class="meta">
+        <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
+        <span>{minutes} min read</span>
+        {updatedDate && <span>Updated {formatDate(updatedDate)}</span>}
+      </p>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="end">
+      {tags.length > 0 && <p>Filed under {tags.join(', ')}.</p>}
+      <p><a href="/blog">All posts</a></p>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--quiet);
+  }
+  .end {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-display);
+    color: var(--quiet);
+  }
+  .end p + p {
+    margin-top: 0.5rem;
+  }
+  .end a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .end a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+</style>

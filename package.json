@@ -1,0 +1,20 @@
+{
+  "name": "hritik-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal website",
+  "scripts": {
+    "dev": "astro dev --port 8029",
+    "build": "astro build",
+    "preview": "astro preview --port 8029"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,219 @@
+/* Tokens */
+:root {
+  --night: #0b1e3f; /* the dominant colour: hero, favicon, theme */
+  --lamp: #ffb547; /* the one accent: the hero light, focus, underlines */
+  --paper: #fbfaf6; /* page background */
+  --ink: #141414; /* text on paper */
+  --dusk: #9fb0d0; /* secondary text on night */
+  --quiet: #625e56; /* secondary text on paper */
+  --rule: #ddd9ce; /* hairlines */
+  --wrap: 72rem;
+  --measure: 62ch;
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+}
+h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 600;
+}
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+p {
+  margin: 0;
+  max-width: var(--measure);
+}
+p + p {
+  margin-top: 1em;
+}
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+time {
+  font-variant-numeric: tabular-nums;
+}
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover {
+  text-decoration-color: var(--lamp);
+  text-decoration-thickness: 2px;
+}
+:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: 3px;
+}
+.skip {
+  position: absolute;
+  top: -4rem;
+  left: 1rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--lamp);
+  color: var(--ink);
+  font-family: var(--font-display);
+}
+.skip:focus {
+  top: 1rem;
+}
+
+/* Layout */
+.wrap {
+  width: min(100% - 3rem, var(--wrap));
+  margin-inline: auto;
+}
+.intro {
+  padding-block: 4rem 2rem;
+}
+.lede {
+  margin-top: 1rem;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--quiet);
+  max-width: 40ch;
+}
+
+/* A labelled band: the label in a narrow left column, the content beside it. */
+.section {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1.5rem 3rem;
+  padding-block: 3.5rem;
+}
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+.section > h2 {
+  font-size: 1.125rem;
+  padding-top: 0.2rem;
+}
+@media (max-width: 48rem) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-block: 2.5rem;
+  }
+}
+
+/* Term and description pairs */
+.pairs {
+  display: grid;
+  gap: 1.25rem;
+}
+.pairs > div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+}
+.pairs dt {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.pairs dd {
+  max-width: var(--measure);
+}
+
+/* Post lists: title and date on one line, the description under them */
+.posts {
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+}
+.posts li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+}
+.posts a {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+.posts a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+.posts time {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--quiet);
+}
+.posts p {
+  grid-column: 1 / -1;
+  color: var(--quiet);
+}
+.more {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Named links: a label, then where it goes */
+.links {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+.links li {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+}
+.links span {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+/* Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
