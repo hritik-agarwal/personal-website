@@ -41,8 +41,9 @@ export type TimelineEntry = {
 };
 
 export const about = {
+  /** Inline html is allowed here: <strong>, <em> and <a>. */
   paragraphs: [
-    'Hi, I am Hritik Agarwal, a software engineer in Bengaluru. I spent nearly three years building Oliv, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a technical consultant, turning ideas into working products.',
+    'Hi, I am <strong>Hritik Agarwal</strong>, a software engineer in Bengaluru. I spent nearly three years building <strong>Oliv</strong>, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a <strong>technical consultant</strong>, turning ideas into working products.',
   ],
   timeline: [
     {
