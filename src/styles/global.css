@@ -19,6 +19,7 @@
 }
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;
@@ -114,102 +115,29 @@ a:hover {
   max-width: 40ch;
 }
 
-/* A labelled band: the label in a narrow left column, the content beside it. */
+/* A page section: its heading on a line of its own, a rule between neighbours */
 .section {
-  display: grid;
-  grid-template-columns: 11rem minmax(0, 1fr);
-  gap: 1.5rem 3rem;
-  padding-block: 3.5rem;
+  padding-block: 4.5rem;
+  scroll-margin-top: 1rem;
 }
 .section + .section {
   border-top: 1px solid var(--rule);
 }
 .section > h2 {
-  font-size: 1.125rem;
-  padding-top: 0.2rem;
+  margin-bottom: 2rem;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
 @media (max-width: 48rem) {
   .section {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding-block: 2.5rem;
+    padding-block: 3rem;
   }
-}
-
-/* Term and description pairs */
-.pairs {
-  display: grid;
-  gap: 1.25rem;
-}
-.pairs > div {
-  display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
-  gap: 1rem;
-}
-.pairs dt {
-  font-family: var(--font-display);
-  font-weight: 600;
-}
-.pairs dd {
-  max-width: var(--measure);
-}
-
-/* Post lists: title and date on one line, the description under them */
-.posts {
-  list-style: none;
-  display: grid;
-  gap: 1.5rem;
-}
-.posts li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.25rem 1.5rem;
-  align-items: baseline;
-}
-.posts a {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  text-decoration: none;
-}
-.posts a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.2em;
-}
-.posts time {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--quiet);
-}
-.posts p {
-  grid-column: 1 / -1;
-  color: var(--quiet);
-}
-.more {
-  margin-top: 2rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-}
-
-/* Named links: a label, then where it goes */
-.links {
-  list-style: none;
-  display: grid;
-  gap: 0.75rem;
-}
-.links li {
-  display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
-  gap: 1rem;
-}
-.links span {
-  font-family: var(--font-display);
-  font-weight: 600;
 }
 
 /* Motion */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {

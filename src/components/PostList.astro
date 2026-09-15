@@ -1,0 +1,57 @@
+---
+/** Posts as a list: title and date on one line, the description under them. */
+import type { Post } from '../lib/posts';
+import { formatDate, isoDate } from '../lib/format';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ol class="posts">
+  {
+    posts.map((post) => (
+      <li>
+        <a href={`/blog/${post.id}`}>{post.data.title}</a>
+        <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
+        <p>{post.data.description}</p>
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .posts {
+    display: grid;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.25rem 1.5rem;
+    align-items: baseline;
+  }
+  a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+  time {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--quiet);
+  }
+  p {
+    grid-column: 1 / -1;
+    color: var(--quiet);
+  }
+</style>

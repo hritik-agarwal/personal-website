@@ -1,60 +1,58 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
-import { now, links } from '../data/site';
+import Timeline from '../components/Timeline.astro';
+import Stack from '../components/Stack.astro';
+import PostList from '../components/PostList.astro';
+import Contact from '../components/Contact.astro';
+import { about, blog } from '../data/site';
 import { getPosts } from '../lib/posts';
-import { formatDate, isoDate } from '../lib/format';
 
-const posts = (await getPosts()).slice(0, 3);
+const posts = (await getPosts()).slice(0, 5);
 ---
 
 <Base tone="night">
   <Hero />
   <div class="wrap">
-    <section class="section" aria-labelledby="now">
-      <h2 id="now">Now</h2>
-      <dl class="pairs">
-        {
-          now.map((item) => (
-            <div>
-              <dt>{item.term}</dt>
-              <dd>{item.text}</dd>
-            </div>
-          ))
-        }
-      </dl>
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p class="lede">{about.lede}</p>
+      <div class="bio">{about.paragraphs.map((text) => <p>{text}</p>)}</div>
+      <h3 class="sub">Timeline</h3>
+      <Timeline entries={about.timeline} />
+      <h3 class="sub">What I work with</h3>
+      <Stack groups={about.stack} />
     </section>
 
-    <section class="section" aria-labelledby="writing">
-      <h2 id="writing">Writing</h2>
-      <div>
-        <ol class="posts">
-          {
-            posts.map((post) => (
-              <li>
-                <a href={`/blog/${post.id}`}>{post.data.title}</a>
-                <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
-                <p>{post.data.description}</p>
-              </li>
-            ))
-          }
-        </ol>
-        <p class="more"><a href="/blog">All posts</a></p>
-      </div>
+    <section class="section" id="blog" aria-labelledby="blog-heading">
+      <h2 id="blog-heading">{blog.title}</h2>
+      <p class="lede">{blog.lede}</p>
+      <PostList posts={posts} />
+      <p class="more"><a href="/blog">All posts</a></p>
     </section>
 
-    <section class="section" aria-labelledby="elsewhere">
-      <h2 id="elsewhere">Elsewhere</h2>
-      <ul class="links">
-        {
-          links.map((link) => (
-            <li>
-              <span>{link.label}</span>
-              <a href={link.href}>{link.handle}</a>
-            </li>
-          ))
-        }
-      </ul>
+    <section class="section" id="hello" aria-labelledby="hello-heading">
+      <h2 id="hello-heading">Say hello</h2>
+      <Contact />
     </section>
   </div>
 </Base>
+
+<style>
+  .lede {
+    margin: 0 0 2rem;
+  }
+  .bio {
+    max-width: 60ch;
+  }
+  .sub {
+    margin: 3.5rem 0 1.5rem;
+    font-size: 1.125rem;
+    color: var(--quiet);
+  }
+  .more {
+    margin-top: 2rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+</style>

@@ -5,6 +5,7 @@ import { site } from './src/data/site.ts';
 
 export default defineConfig({
   site: site.url,
+  redirects: { '/about': '/#about' },
   integrations: [sitemap()],
   fonts: [
     {

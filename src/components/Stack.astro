@@ -1,0 +1,44 @@
+---
+/** Tools, one column per group, like a table without the box. */
+interface Props {
+  groups: { group: string; items: string[] }[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="stack">
+  {
+    groups.map((group) => (
+      <div>
+        <p class="group">{group.group}</p>
+        <ul>
+          {group.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    gap: 2.5rem 3rem;
+  }
+  .group {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.0625rem;
+  }
+  ul {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    list-style: none;
+  }
+</style>

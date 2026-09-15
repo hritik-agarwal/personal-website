@@ -5,8 +5,8 @@
  * component. Blog posts are the markdown files beside this file in
  * ./blog, one per post, with the fields described in ../content.config.ts.
  *
- * Links, work history and education are real. The `now` list is still
- * example content to replace.
+ * Links, work history and education are real. The posts in ./blog are
+ * still examples.
  */
 
 export const site = {
@@ -18,8 +18,8 @@ export const site = {
 };
 
 export const nav = [
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
+  { label: 'About', href: '/#about' },
+  { label: 'Blog', href: '/#blog' },
 ];
 
 export const hero = {
@@ -27,22 +27,6 @@ export const hero = {
   claim:
     'Full-stack and AI developer. Most days that means TypeScript, Python and a model or two. Most nights, a book and a notebook.',
 };
-
-/** Short, current, dated by the fact that you will edit it. Shown on the home page. */
-export const now = [
-  {
-    term: 'Building',
-    text: 'A small framework for internal agents, in TypeScript, that I keep rewriting until it is boring.',
-  },
-  {
-    term: 'Learning',
-    text: 'How the falling cost of inference changes what software is worth building.',
-  },
-  {
-    term: 'Reading',
-    text: 'Richard Rhodes on the Manhattan Project, and a stack of essays on tacit knowledge.',
-  },
-];
 
 export const links = [
   { label: 'GitHub', handle: 'hritik-agarwal', href: 'https://github.com/hritik-agarwal' },
