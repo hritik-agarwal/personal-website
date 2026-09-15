@@ -41,9 +41,8 @@ export type TimelineEntry = {
 };
 
 export const about = {
-  lede: 'I like solving problems, both in life and in code.',
   paragraphs: [
-    'I am Hritik Agarwal, a software engineer in Bengaluru. I spent nearly three years building Oliv, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a technical consultant, turning ideas into working products.',
+    'Hi, I am Hritik Agarwal, a software engineer in Bengaluru. I spent nearly three years building Oliv, an AI companion for sales teams, and since April 2026 I have worked one-on-one with founders as a technical consultant, turning ideas into working products.',
   ],
   timeline: [
     {

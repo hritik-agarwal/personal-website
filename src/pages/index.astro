@@ -4,7 +4,7 @@ import Timeline from '../components/Timeline.astro';
 import Stack from '../components/Stack.astro';
 import PostList from '../components/PostList.astro';
 import Contact from '../components/Contact.astro';
-import { about, blog } from '../data/site';
+import { site, about, blog } from '../data/site';
 import { getPosts } from '../lib/posts';
 
 const posts = (await getPosts()).slice(0, 5);
@@ -13,7 +13,7 @@ const posts = (await getPosts()).slice(0, 5);
 <Base home>
   <div class="wrap">
     <section class="section first" id="about" aria-labelledby="about-heading">
-      <h1 id="about-heading">{about.lede}</h1>
+      <h1 id="about-heading" class="visually-hidden">{site.name}</h1>
       <div class="bio">{about.paragraphs.map((text) => <p>{text}</p>)}</div>
       <h2 class="sub">Timeline</h2>
       <Timeline entries={about.timeline} />
@@ -49,16 +49,18 @@ const posts = (await getPosts()).slice(0, 5);
   .first {
     padding-top: 5rem;
   }
-  .first h1 {
-    max-width: 28ch;
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
-    font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+  /* The name stays in the document for readers and search, not on the screen */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
   .bio {
-    margin-top: 1.5rem;
     max-width: 60ch;
+    font-size: 1.1875rem;
   }
   .sub {
     margin: 3.5rem 0 1.5rem;
